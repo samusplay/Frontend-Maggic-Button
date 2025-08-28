@@ -6,5 +6,10 @@ export const routes: Routes = [
     loadChildren:()=>import('./layout/layout.module').then(m=>m.LayoutModule)
     
 },
+{
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+},
+
 {path:'***',redirectTo:''}
 ];

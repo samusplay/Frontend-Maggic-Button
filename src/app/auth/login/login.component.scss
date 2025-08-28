@@ -1,0 +1,120 @@
+/* ===== Variables y layout base ===== */
+:host {
+  /* paleta suave */
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: rgba(2, 6, 23, .08);
+  --accent: #4f46e5;           /* indigo-600 */
+  --shadow: 0 12px 28px rgba(2, 6, 23, .10);
+  --radius: 14px;
+
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;          /* centra vertical + respeta móviles */
+  padding: 24px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== Tarjeta ===== */
+.login-card {
+  width: min(420px, 92vw);
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: relative;
+
+  /* franja superior con degradado sutil */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: linear-gradient(90deg, var(--accent), #7c3aed, #06b6d4);
+    opacity: .9;
+  }
+
+  /* hover elegante */
+  transition: transform .15s ease, box-shadow .2s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(2, 6, 23, .12);
+  }
+}
+
+/* ===== Título ===== */
+h2 {
+  margin: 6px 0 22px;
+  text-align: center;
+  font-size: clamp(1.45rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: .2px;
+
+  /* subrayado decorativo */
+  &::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 2px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: .45;
+  }
+}
+
+/* ===== Campos ===== */
+.full-width { width: 100%; }
+
+mat-form-field {
+  display: block;
+  margin-bottom: 16px;
+
+  /* redondeo suave al wrapper de Material (no rompe nada) */
+  .mat-mdc-text-field-wrapper,
+  .mat-form-field-wrapper {
+    border-radius: 10px;
+  }
+}
+
+/* errores más legibles */
+mat-error {
+  font-size: 0.78rem;
+  color: #ef4444;              /* rojo accesible */
+}
+
+/* ===== Botón ===== */
+button[type="submit"] {
+  width: 100%;
+  height: 44px;
+  margin-top: 6px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  box-shadow: 0 3px 10px rgba(79, 70, 229, .25);
+  transition: transform .12s ease, box-shadow .2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, .32);
+  }
+  &:active { transform: translateY(0); }
+}
+
+/* ===== Responsive fino ===== */
+@media (max-width: 380px) {
+  :host { padding: 16px; }
+  .login-card { padding: 22px 18px; }
+  h2 { margin-bottom: 18px; }
+}
+
+
+button {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.6rem 1.2rem;
+}
+
